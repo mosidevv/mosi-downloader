@@ -38,7 +38,7 @@ COOKIE_DIR.mkdir(parents=True, exist_ok=True)
 
 CONCURRENCY = int(os.getenv("MOSI_CONCURRENCY", "3"))
 PUBLIC_BASE_URL = os.getenv(
-    "MOSI_PUBLIC_BASE_URL", "https://tardis.cloudforest-wezen.ts.net/viddown"
+    "MOSI_PUBLIC_BASE_URL", "https://viddown.tardis.oursquad.rocks"
 ).rstrip("/")
 TELEGRAM_BOT_TOKEN = os.getenv("MOSI_TELEGRAM_BOT_TOKEN", "").strip()
 TELEGRAM_CHAT_ID = os.getenv("MOSI_TELEGRAM_CHAT_ID", "").strip()
