@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Admin — Mosi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/viddown/">
+  <link rel="stylesheet" href="static/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <span class="topbar-logo">⬇ Mosi</span>
+    <nav class="topbar-nav">
+      <a href="./">Queue</a>
+      <a href="admin" class="active">Admin</a>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- yt-dlp version + update -->
+    <section class="card">
+      <h2>yt-dlp</h2>
+      <div class="admin-row">
+        <div>
+          <div class="label">Current version</div>
+          <div id="ytdlp-version" class="mono">Loading…</div>
+        </div>
+        <button class="btn btn-secondary" id="btn-update-ytdlp">Update now</button>
+      </div>
+      <pre id="update-output" class="log-box" style="display:none;margin-top:12px;"></pre>
+    </section>
+
+    <!-- YouTube cookie tips -->
+    <section class="card">
+      <h2>YouTube Authentication</h2>
+      <p class="muted" style="margin-bottom:14px;">
+        YouTube OAuth2 was removed from yt-dlp. Cookie-based auth is the only supported method.
+        For best results exporting YouTube cookies:
+      </p>
+      <ol style="color:var(--muted);font-size:13px;line-height:2;padding-left:20px;">
+        <li>Open a fresh Chrome/Edge window in a <strong style="color:var(--text)">normal (non-incognito)</strong> tab</li>
+        <li>Sign in to YouTube and watch any video to refresh session cookies</li>
+        <li>Use the <strong style="color:var(--text)">Get cookies.txt LOCALLY</strong> extension and export for <code>youtube.com</code></li>
+        <li>Upload the file using the cookie manager below</li>
+      </ol>
+      <p class="muted" style="margin-top:10px;font-size:12px;">
+        YouTube cookies typically last 1–6 months. Re-export if you start seeing sign-in errors in job logs.
+      </p>
+    </section>
+
+    <!-- Cookie files -->
+    <section class="card">
+      <h2>Browser Cookies</h2>
+      <p class="muted">
+        Export cookies with the <strong>Get cookies.txt LOCALLY</strong> extension
+        (Chrome / Edge / Firefox). Be logged in to the site before exporting.
+        Files are in Netscape format.
+      </p>
+
+      <div id="cookie-list" class="cookie-grid"></div>
+
+      <div class="upload-form">
+        <h3>Upload cookie file</h3>
+        <div class="upload-row">
+          <select id="cookie-site">
+            <option value="youtube">YouTube</option>
+            <option value="twitter">X / Twitter</option>
+            <option value="instagram">Instagram</option>
+            <option value="threads">Threads</option>
+            <option value="bluesky">BlueSky</option>
+          </select>
+          <label class="file-label">
+            <input type="file" id="cookie-file" accept=".txt">
+            <span id="file-name-display">Choose cookies.txt…</span>
+          </label>
+          <button class="btn btn-primary" id="btn-upload-cookie">Upload</button>
+        </div>
+        <div id="upload-result" style="margin-top:8px;"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="static/app.js"></script>
+</body>
+</html>

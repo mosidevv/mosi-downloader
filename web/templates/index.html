@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Mosi Downloader</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/viddown/">
+  <link rel="stylesheet" href="static/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <span class="topbar-logo">⬇ Mosi</span>
+    <nav class="topbar-nav">
+      <a href="./" class="active">Queue</a>
+      <a href="admin">Admin</a>
+    </nav>
+    <span id="ytdlp-badge" class="version-badge" title="yt-dlp version">…</span>
+  </header>
+
+  <main class="container">
+
+    <!-- Submit form -->
+    <section class="card submit-card">
+      <h2>New Download</h2>
+      <form id="download-form" class="submit-form">
+        <input id="url" type="url" placeholder="https://youtube.com/watch?v=…  or Twitter, Instagram, TikTok…" required autocomplete="off">
+        <div class="submit-row">
+          <select id="quality">
+            <option value="best">Best quality</option>
+            <option value="1080p">1080p</option>
+            <option value="720p">720p</option>
+            <option value="480p">480p</option>
+            <option value="audio">Audio only (MP3)</option>
+          </select>
+          <label class="toggle-label">
+            <input id="playlist" type="checkbox">
+            <span>Playlist</span>
+          </label>
+          <button type="submit" class="btn btn-primary">Queue</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Job board -->
+    <section class="job-board">
+      <div class="job-column" id="col-active">
+        <h3 class="col-header active-header">Active <span class="badge" id="badge-active">0</span></h3>
+        <div class="job-list" id="list-active"></div>
+      </div>
+      <div class="job-column" id="col-queued">
+        <h3 class="col-header queued-header">Queued <span class="badge" id="badge-queued">0</span></h3>
+        <div class="job-list" id="list-queued"></div>
+      </div>
+      <div class="job-column" id="col-done">
+        <h3 class="col-header done-header">Completed <span class="badge" id="badge-done">0</span></h3>
+        <div class="job-list" id="list-done"></div>
+      </div>
+      <div class="job-column" id="col-failed">
+        <h3 class="col-header failed-header">Failed <span class="badge" id="badge-failed">0</span><button class="btn btn-sm btn-danger clear-all-btn" id="btn-clear-failed" style="display:none">Clear all</button></h3>
+        <div class="job-list" id="list-failed"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="static/app.js"></script>
+</body>
+</html>

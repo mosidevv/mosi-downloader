@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Job Details — Mosi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/viddown/">
+  <link rel="stylesheet" href="static/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <span class="topbar-logo">⬇ Mosi</span>
+    <nav class="topbar-nav">
+      <a href="./">Queue</a>
+      <a href="admin">Admin</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <a href="./" class="back-link">← Back to queue</a>
+
+    <section class="card">
+      <div class="job-detail-header">
+        <div id="job-thumb-wrap" class="job-thumb-wrap" style="display:none">
+          <img id="job-thumb" class="job-thumb" alt="">
+        </div>
+        <div class="job-detail-meta">
+          <h1 id="job-title">Loading…</h1>
+          <div class="job-meta-row">
+            <span class="status-pill" id="job-status-pill">—</span>
+            <span id="job-url-display" class="job-url"></span>
+          </div>
+          <div class="progress-wrap" id="progress-wrap">
+            <div class="progress">
+              <div id="job-progress-bar" class="progress-fill"></div>
+            </div>
+            <span id="progress-label" class="progress-label">0%</span>
+            <span id="job-speed" class="muted"></span>
+            <span id="job-eta" class="muted"></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="download-area" class="download-area"></div>
+      <div id="job-error" class="error-box" style="display:none"></div>
+    </section>
+
+    <section class="card">
+      <h2>Log Output</h2>
+      <pre id="job-log" class="log-box"></pre>
+    </section>
+  </main>
+
+  <script src="static/app.js"></script>
+</body>
+</html>

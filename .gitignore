@@ -1,0 +1,41 @@
+# Virtual environment
+.venv/
+venv/
+
+# Environment files (contain secrets)
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+
+# IDE & Claude
+.idea/
+.vscode/
+*.swp
+*.swo
+.claude/
+
+# Project specific
+jobs/
+logs/
+cookies/
+
+# Downloaded media
+~/Downloads/media/
+
+# System
+.DS_Store
+Thumbs.db
+*.log
+
+# Node (if any)
+node_modules/
+
+# yt-dlp cache
+.cache/
