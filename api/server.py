@@ -56,7 +56,7 @@ COOKIE_SITES = {
     "youtube": ["youtube.com", "youtu.be", "www.youtube.com"],
     "twitter": ["twitter.com", "x.com", "t.co", "www.twitter.com"],
     "instagram": ["instagram.com", "www.instagram.com"],
-    "threads": ["threads.net", "www.threads.net"],
+    "threads": ["threads.net", "www.threads.net", "threads.com", "www.threads.com"],
     "bluesky": ["bsky.app", "bsky.social", "www.bsky.app"],
 }
 
