@@ -12,7 +12,7 @@ import uuid
 import zipfile
 from pathlib import Path
 from typing import Any, Dict, List, Optional
-from urllib.parse import quote
+from urllib.parse import quote, urlparse
 from urllib.request import Request, urlopen
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
@@ -37,9 +37,18 @@ DOWNLOAD_DIR.mkdir(parents=True, exist_ok=True)
 COOKIE_DIR.mkdir(parents=True, exist_ok=True)
 
 CONCURRENCY = int(os.getenv("MOSI_CONCURRENCY", "3"))
-PUBLIC_BASE_URL = os.getenv(
+_PUBLIC_BASE_URL_RAW = os.getenv(
     "MOSI_PUBLIC_BASE_URL", "https://viddown.tardis.oursquad.rocks"
 ).rstrip("/")
+
+
+def _get_public_base_url() -> str:
+    base = _PUBLIC_BASE_URL_RAW
+    parsed = urlparse(base)
+    return f"{parsed.scheme}://{parsed.netloc}"
+
+
+PUBLIC_BASE_URL = _get_public_base_url()
 TELEGRAM_BOT_TOKEN = os.getenv("MOSI_TELEGRAM_BOT_TOKEN", "").strip()
 TELEGRAM_CHAT_ID = os.getenv("MOSI_TELEGRAM_CHAT_ID", "").strip()
 
@@ -276,10 +285,8 @@ def run_download(job_id: str) -> None:
     if apple_compat:
         cmd.extend(
             [
-                "--remux-video",
-                "mp4",
-                "--format-sort",
-                "+codec:h264:m4a",
+                "--postprocessor-args",
+                "ffmpeg:-c:v libx264 -crf 23 -preset fast -c:a aac -b:a 128k",
                 "--no-embed-thumbnail",
                 "--no-embed-metadata",
             ]
